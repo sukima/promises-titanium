@@ -22,6 +22,9 @@ function RootWin() {
 
 // onDestroy event handler
 RootWin.prototype.onDestroy = function() {
+	this.timeoutTestButton = null;
+	this.modalTestButton = null;
+	this.httpButtons = null;
 	this.win = null;
 };
 
