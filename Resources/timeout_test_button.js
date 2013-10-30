@@ -1,8 +1,9 @@
 // TimeoutTestButton - A button for testing a timeout with promises
 /*jshint eqnull:true */
 var
-	Q    = require("q"),
-	Util = require("util");
+	Q               = require("q"),
+	Util            = require("util"),
+	TimeoutPromiser = require("timeout_promiser");
 
 function TimeoutTestButton() {
 	this.button = Ti.UI.createButton({
@@ -25,7 +26,7 @@ TimeoutTestButton.prototype.onClick = function() {
 	this.button.setEnabled(false);
 	this.button.setTitle("And... Go!");
 
-	promise = runTimeout();
+	promise = TimeoutPromiser.run();
 
 	promise.then(function(value) {
 		_this.button.setTitle("" + value + " (try again)");
@@ -43,38 +44,6 @@ TimeoutTestButton.prototype.onClick = function() {
 		_this.button.setEnabled(true);
 	});
 };
-
-// Helper methods (private)
-function runTimeout() {
-	var
-		defer        = Q.defer(),
-		timeout      = 1000,
-		currentCount = 11;
-
-	function update() {
-		currentCount--;
-		if (currentCount > 0) {
-			if (currentCount < 6 && randomFail()) {
-				defer.reject("Random error");
-			}
-			else {
-				defer.notify(currentCount);
-				setTimeout(update, timeout);
-			}
-		}
-		else {
-			defer.resolve("Yeah it finished!");
-		}
-	}
-
-	update();
-
-	return defer.promise;
-}
-
-function randomFail() {
-	return (Math.random() > 0.8);
-}
 
 module.exports = TimeoutTestButton;
 /* vim:set ts=2 sw=2 noet fdm=marker: */
