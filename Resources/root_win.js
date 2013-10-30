@@ -1,6 +1,7 @@
 // Root Window - The first window on app launch
 /*jshint eqnull:true */
 var
+	Util                 = require("util"),
 	TimeoutTestButton = require("timeout_test_button");
 	// HttpTestButton    = require("http_test_button"),
 	// TimeoutTestButton = require("timeout_test_button"),
@@ -13,9 +14,8 @@ function RootWin() {
 	});
 
 	buildComponents.call(this);
-	bindEventFunctions.call(this);
 
-	this.win.addEventListener("close", this.onDestroy);
+	this.win.addEventListener("close", Util.bind(this.onDestroy, this));
 }
 
 // onDestroy event handler
@@ -42,10 +42,6 @@ function buildComponents() {
 	// this.win.add(this.httpTestButton.button);
 	this.win.add(this.timeoutTestButton.button);
 	// this.win.add(this.modalTestButton.button);
-}
-
-function bindEventFunctions() {
-	this.onDestroy.bind(this);
 }
 
 module.exports = RootWin;
