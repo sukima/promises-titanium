@@ -11,7 +11,7 @@ var
 function RootWin() {
 	this.win = Ti.UI.createWindow({
 		title:           "Example Applicaiton",
-		// layout:          "vertical",
+		layout:          "vertical",
 		backgroundColor: "white"
 	});
 

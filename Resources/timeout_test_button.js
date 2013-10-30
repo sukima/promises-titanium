@@ -10,7 +10,7 @@ function TimeoutTestButton() {
 		backgroundColor: "grey",
 		width:           "80%",
 		height:          40,
-		// top:             20,
+		top:             20,
 		borderRadius:    6,
 		borderWidth:     2
 	});
