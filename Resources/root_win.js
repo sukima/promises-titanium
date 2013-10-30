@@ -1,9 +1,9 @@
 // Root Window - The first window on app launch
 /*jshint eqnull:true */
 var
-	Util                 = require("util"),
+	Util              = require("util"),
 	TimeoutTestButton = require("timeout_test_button"),
-	// HttpTestButton    = require("http_test_button"),
+	HttpTestButton    = require("http_test_button"),
 	ModalTestButton   = require("modal_test_button");
 
 // Constructor
@@ -39,13 +39,21 @@ RootWin.prototype.close = function() {
 
 // Helper methods (private)
 function buildComponents() {
+	var i, len;
+
 	this.timeoutTestButton = new TimeoutTestButton();
-	// this.httpTestButton    = new HttpTestButton();
 	this.modalTestButton   = new ModalTestButton();
+	this.httpButtons = [
+		new HttpTestButton("success", "http://localhost:3000/arujex/1/js", true),
+		new HttpTestButton("parse error", "http://localhost:3000/ikupag/1/js"),
+		new HttpTestButton("not found", "http://localhost:3000/not_found")
+	];
 
 	this.win.add(this.timeoutTestButton.button);
-	// this.win.add(this.httpTestButton.button);
 	this.win.add(this.modalTestButton.button);
+	for (i = 0, len = this.httpButtons.length; i < len; i++) {
+		this.win.add(this.httpButtons[i].button);
+	}
 }
 
 module.exports = RootWin;
