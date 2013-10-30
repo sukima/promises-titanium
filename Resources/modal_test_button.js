@@ -1,7 +1,6 @@
 // ModalTestButton - A button for testing a timeout with promises
 /*jshint eqnull:true */
 var
-	Q          = require("q"),
 	Util       = require("util"),
 	ModalPopup = require("modal_popup");
 
