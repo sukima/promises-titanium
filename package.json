@@ -1,0 +1,25 @@
+{
+  "name": "promises-titanium-example",
+  "description": "An example on using promises in a Titanium application",
+  "version": "0.0.1",
+  "authors": [
+    { "name": "Devin Weaver", "email": "suki@tritarget,org" }
+  ],
+	"devDependencies": {
+		"titanium":      "~> 3.1.1",
+		"coffee-script": "~> 1.6.3",
+		"jasmine-node":  "~> 1.2.0",
+		"proxyquire":    "~> 0.4.0",
+		"mockti":        "~> 0.1.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sukima/promises-titanium-example.git"
+	},
+	"scripts": {
+		"test": "sh spec/spec_runner.sh"
+	},
+	"engines": {
+		"node": ">=0.8"
+	}
+}
