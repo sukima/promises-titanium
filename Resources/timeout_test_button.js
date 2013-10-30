@@ -1,17 +1,15 @@
 // TimeoutTestButton - A button for testing a timeout with promises
 /*jshint eqnull:true */
-var Q = require("q");
+var
+	Q    = require("q"),
+	Util = require("util");
 
 function TimeoutTestButton() {
-	this.state = 0;
-
 	this.button = Ti.UI.createButton({
 		title: "Timeout Test"
 	});
 
-	bindEventListeners.call(this);
-
-	this.button.addEventListener("click", this.onClick);
+	this.button.addEventListener("click", Util.bind(this.onClick, this));
 }
 
 // Event methods
@@ -40,10 +38,6 @@ TimeoutTestButton.prototype.onClick = function() {
 };
 
 // Helper methods (private)
-function bindEventListeners() {
-	this.onClick.bind(this);
-}
-
 function runTimeout() {
 	var
 		defer        = Q.defer(),
