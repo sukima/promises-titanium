@@ -12,7 +12,8 @@ function RootWin() {
 	this.win = Ti.UI.createWindow({
 		title:           "Example Applicaiton",
 		layout:          "vertical",
-		backgroundColor: "white"
+		backgroundColor: "white",
+		exitOnClose:     true
 	});
 
 	buildComponents.call(this);
