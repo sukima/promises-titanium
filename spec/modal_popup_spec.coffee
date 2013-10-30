@@ -1,16 +1,6 @@
 describe "ModalPopup", ->
-  # Tests are run in Node which offers a global "util" module. Since while
-  # testing we are not running in the Titanium environment which would read the
-  # util.js file in the Resources directory, we have to force node to load the
-  # correct one. proxyquire will prepend a relative path. This offers us the
-  # correct module assigned to Util. We then pass this into the proxyquire
-  # module to force the correct module when node encounters require("util")
-  Util = proxyquire("util")
-  # Since we want to overwite the node "util" module we do not want it merge
-  # the node module with our own. @noCallThru prevents that.
-  Util["@noCallThru"] = true
   # Load the ModalPopup now with the correct Util module.
-  ModalPopup = proxyquire("modal_popup", {"util": Util})
+  ModalPopup = proxyquire("modal_popup")
 
   beforeEach ->
     @popup = new ModalPopup
