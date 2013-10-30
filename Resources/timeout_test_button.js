@@ -53,8 +53,8 @@ function runTimeout() {
 
 	function update() {
 		currentCount--;
-		if (currentCount >= 0) {
-			if (randomFail()) {
+		if (currentCount > 0) {
+			if (currentCount < 6 && randomFail()) {
 				defer.reject("Random error");
 			}
 			else {
@@ -71,7 +71,7 @@ function runTimeout() {
 }
 
 function randomFail() {
-	return (Math.random() > 0.7);
+	return (Math.random() > 0.8);
 }
 
 module.exports = TimeoutTestButton;
