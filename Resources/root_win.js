@@ -10,7 +10,9 @@ var
 // Constructor
 function RootWin() {
 	this.win = Ti.UI.createWindow({
-		title: "Example Applicaiton"
+		title:           "Example Applicaiton",
+		// layout:          "vertical",
+		backgroundColor: "white"
 	});
 
 	buildComponents.call(this);
