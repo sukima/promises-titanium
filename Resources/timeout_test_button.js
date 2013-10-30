@@ -67,6 +67,8 @@ function runTimeout() {
 		}
 	}
 
+	update();
+
 	return defer.promise;
 }
 
