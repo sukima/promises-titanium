@@ -22,24 +22,25 @@ function TimeoutTestButton() {
 TimeoutTestButton.prototype.onClick = function() {
 	var _this = this, promise;
 
-	_this.button.enabled = false;
+	this.button.setEnabled(false);
+	this.button.setTitle("And... Go!");
 
 	promise = runTimeout();
 
-	promose.then(function() {
-		_this.button.title = "Yeah it finished! (try again)";
+	promise.then(function(value) {
+		_this.button.setTitle("" + value + " (try again)");
 	});
 
 	promise.fail(function(reason) {
-		_this.button.title = "Oh Nos! " + reason;
+		_this.button.setTitle("Oh Nos! " + reason);
 	});
 
-	promose.progress(function(count) {
-		_this.button.title = "Working... " + count;
+	promise.progress(function(count) {
+		_this.button.setTitle("Petting kittens... " + count);
 	});
 
 	promise.fin(function() {
-		_this.button.enabled = true;
+		_this.button.setEnabled(true);
 	});
 };
 
