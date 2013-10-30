@@ -63,7 +63,7 @@ function runTimeout() {
 			}
 		}
 		else {
-			defer.resolve();
+			defer.resolve("Yeah it finished!");
 		}
 	}
 
