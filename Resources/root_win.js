@@ -2,10 +2,9 @@
 /*jshint eqnull:true */
 var
 	Util                 = require("util"),
-	TimeoutTestButton = require("timeout_test_button");
+	TimeoutTestButton = require("timeout_test_button"),
 	// HttpTestButton    = require("http_test_button"),
-	// TimeoutTestButton = require("timeout_test_button"),
-	// ModalTestButton   = require("modal_test_button");
+	ModalTestButton   = require("modal_test_button");
 
 // Constructor
 function RootWin() {
@@ -40,13 +39,13 @@ RootWin.prototype.close = function() {
 
 // Helper methods (private)
 function buildComponents() {
-	// this.httpTestButton    = new HttpTestButton();
 	this.timeoutTestButton = new TimeoutTestButton();
-	// this.modalTestButton   = new ModalTestButton();
+	// this.httpTestButton    = new HttpTestButton();
+	this.modalTestButton   = new ModalTestButton();
 
-	// this.win.add(this.httpTestButton.button);
 	this.win.add(this.timeoutTestButton.button);
-	// this.win.add(this.modalTestButton.button);
+	// this.win.add(this.httpTestButton.button);
+	this.win.add(this.modalTestButton.button);
 }
 
 module.exports = RootWin;
