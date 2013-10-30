@@ -4,5 +4,9 @@ global.Titanium.Filesystem.separator = "/"
 
 orig_proxyquire = require("proxyquire")
 
-exports.proxyquire = (path, mocks...) ->
-	orig_proxyquire "../Resources/#{module}", mocks...
+exports.proxyquire = (module, mocks...) ->
+  module = "../Resources/#{module}"
+  if mocks.length is 0
+    require module
+  else
+    orig_proxyquire module, mocks...
