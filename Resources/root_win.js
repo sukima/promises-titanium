@@ -28,11 +28,13 @@ RootWin.prototype.onDestroy = function() {
 // open()
 RootWin.prototype.open = function() {
 	this.win.open();
+	return this;
 };
 
 // close()
 RootWin.prototype.close = function() {
 	this.win.close();
+	return this;
 };
 
 // Helper methods (private)
