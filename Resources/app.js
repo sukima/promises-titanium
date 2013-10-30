@@ -1,7 +1,9 @@
 (function() {
 
-	var root_win = require("root_win");
+	var RootWin = require("root_win"), main_window;
 
-	root_win.open();
+	main_window = new RootWin();
+	main_window.open();
 
 })();
+// vim:set sw=2 ts=2 noet fdm=marker:
