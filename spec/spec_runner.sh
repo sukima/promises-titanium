@@ -31,7 +31,7 @@ app_dir=$(cd "${DIR}/../Resources" && pwd)
 if ! hash jsamine-node > /dev/null 2>&1; then
 	JASMINE_NODE=$(cd "${DIR}/../node_modules/.bin" && pwd)
 	JASMINE_NODE="${JASMINE_NODE}/jasmine-node"
-	if [[ ! -e "$JASMINE_NODE" ]]; then
+	if [ ! -e "$JASMINE_NODE" ]; then
 		echo "[ERROR] jasmine-node executable not found. Is it in your PATH? Or did you run 'npm install .'?" >&2
 		exit -1
 	fi
