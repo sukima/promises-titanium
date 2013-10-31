@@ -21,8 +21,8 @@
     "url": "https://github.com/sukima/promises-titanium-example.git"
   },
   "scripts": {
-    "test":  "sh spec/spec_runner.sh",
-    "start": "titanium build --platform ios --ios-version 7.0 --retina --tall --log-level debug"
+    "test": "sh spec/spec_runner.sh",
+    "start": "bash launch.sh"
   },
   "engines": {
     "node": ">=0.8"
