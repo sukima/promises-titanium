@@ -15,8 +15,8 @@ function ModalPopup() {
 		backgroundColor: "gray"
 	});
 	this.navWin = Ti.UI.iOS.createNavigationWindow({
-		window: this.win,
-		modal:  true
+		window:          this.win,
+		modal:           true
 	});
 	this.label = Ti.UI.createLabel({
 		text:  "Dear kind user, what is your name?",
@@ -86,7 +86,7 @@ ModalPopup.prototype.promise = function() {
 };
 
 ModalPopup.prototype.open = function() {
-	this.navWin.open({modal: true});
+	this.navWin.open();
 	return this;
 };
 
