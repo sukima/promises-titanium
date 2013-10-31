@@ -24,12 +24,17 @@ ModalTestButton.prototype.onClick = function() {
 	popup = new ModalPopup();
 	promise = popup.open().promise();
 
+	Ti.API.debug("[ModalTestButton] Modal Popup opened");
+
 	promise.then(function(name) {
+		Ti.API.info("[ModalTestButton] User inputed name as '" + name + "'");
+		if (name === "") { throw "empty name"; }
 		_this.button.setTitle("Hello " + name + "!");
-	});
-	promise.fail(function(reason) {
+	})
+	.fail(function(reason) {
+		Ti.API.info("[ModalTestButton] Modal Popup promise rejected, " + reason);
 		_this.button.setTitle("I don't know you (" + reason + ")");
-	});
+	}).done();
 };
 
 module.exports = ModalTestButton;

@@ -28,21 +28,22 @@ TimeoutTestButton.prototype.onClick = function() {
 
 	promise = TimeoutPromiser.run();
 
+	Ti.API.debug("[TimeoutTestButton] TimeoutPromiser return a promise");
+
 	promise.then(function(value) {
+		Ti.API.info("[TimeoutTestButton] Promise was fulfilled");
 		_this.button.setTitle("" + value + " (try again)");
-	});
-
-	promise.fail(function(reason) {
+	})
+	.fail(function(reason) {
+		Ti.API.info("[TimeoutTestButton] Promise was rejected");
 		_this.button.setTitle("Oh Nos! " + reason);
-	});
-
-	promise.progress(function(count) {
+	})
+	.progress(function(count) {
 		_this.button.setTitle("Petting kittens... " + count);
-	});
-
-	promise.fin(function() {
+	})
+	.fin(function() {
 		_this.button.setEnabled(true);
-	});
+	}).done();
 };
 
 module.exports = TimeoutTestButton;
