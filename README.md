@@ -11,6 +11,7 @@ An example on using promises in a Titanium application.
     - [HTTP Requests](#http-requests)
 - [Tests](#tests)
     - [Example specs in Jasmine](#example-specs-in-jasmine)
+- [License](#license)
 
 ## Getting Started
 
@@ -113,3 +114,11 @@ describe "A working test for promises", ->
 A little but more code but now we can guarantee that when we expect the
 callback to have been called the `then` method will have had a chance to
 finish.
+
+# License
+
+Promises Titanium Example by [Devin Weaver](http://tritarget.org/)
+is dual licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
+and a [Do What You Want To 3.0 Public License](http://tritarget.org/wywtpl/).
+
+[![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)](http://creativecommons.org/licenses/by/3.0/deed.en_US)
