@@ -2,6 +2,16 @@
 
 An example on using promises in a Titanium application.
 
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [Getting Started](#getting-started)
+- [How promises are used in titanium](#how-promises-are-used-in-titanium)
+    - [Thread blocking timeouts](#thread-blocking-timeouts)
+    - [Modal windows / controls](#modal-windows--controls)
+    - [HTTP Requests](#http-requests)
+- [Tests](#tests)
+    - [Example specs in Jasmine](#example-specs-in-jasmine)
+
 ## Getting Started
 
 First make sure you have a working titanium environment. NPM will install
