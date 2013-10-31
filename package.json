@@ -13,7 +13,8 @@
     "coffee-script": "~> 1.6.3",
     "jasmine-node": "~> 1.2.0",
     "proxyquire": "~> 0.4.0",
-    "mockti": "~> 0.1.0"
+    "mockti": "~> 0.1.0",
+    "express": "~3.4.4"
   },
   "repository": {
     "type": "git",
