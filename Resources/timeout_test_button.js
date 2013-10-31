@@ -1,7 +1,6 @@
 // TimeoutTestButton - A button for testing a timeout with promises
 /*jshint eqnull:true */
 var
-	Q               = require("q"),
 	Util            = require("util"),
 	TimeoutPromiser = require("timeout_promiser");
 

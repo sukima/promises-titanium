@@ -53,7 +53,7 @@ function buildComponents() {
 	this.timeoutTestButton = new TimeoutTestButton();
 	this.modalTestButton   = new ModalTestButton();
 	this.httpButtons = [
-		new HttpTestButton("success", "http://localhost:3000/good_json", true),
+		new HttpTestButton("success", "http://localhost:3000/good_json"),
 		new HttpTestButton("parse error", "http://localhost:3000/bad_json"),
 		new HttpTestButton("not found", "http://localhost:3000/not_found")
 	];
