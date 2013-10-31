@@ -35,3 +35,71 @@ how promises *could* be implemented to help.
 #### Modal windows / controls
 
 #### HTTP Requests
+
+## Tests
+
+This project uses jasmine-node to run tests on the application. It is Node
+based and therefore uses a [mocked out][mockti] version of the Titanium API.
+Keeping this in mind that tests only test the behaviour of the code written
+in this application and *not* the Titanium API. Which means testing that
+views render correctly is out of scope with this setup.
+
+[mockti]: https://github.com/rf/mockti
+
+You run the tests with:
+
+    $ npm test
+
+The examples used illustrate how to properly handle the asynchronous nature
+of promises. Synchronous assumptions in the usual tests will fail or offer
+inconsistent results when promises are used and require the tests to be
+written asynchronously.
+
+#### Example specs in Jasmine
+
+When testing promise code in [Jasmine][] you have to remember that despite
+using any mock timer all methods in the [Q library][q] implementation are
+asynchronous.
+
+[Jasmine]: http://pivotal.github.io/jasmine/
+[q]: http://documentup.com/kriskowal/q/
+
+The following example **WILL HAVE PROMBLEMS**:
+
+```CoffeeScript
+describe "A broken test for promises", ->
+  it "should call the callback but will fail instead", ->
+    callback = createSpy "callback"
+    promise = functionReturnsAResolvedPromise()
+    promise.then(callback)
+    expect( callback ).toHaveBeenCalled()
+```
+
+The reason is that the `then` method will return immediately but not run the
+callback to next tick. So when we attempt to see if the spy was called it
+hasn't yet.
+
+To fix this use an asynchronous test pattern:
+
+```CoffeeScript
+describe "A working test for promises", ->
+  beforeEach ->
+    @promise = functionReturnsAResolvedPromise()
+
+  it "should call the callback", ->
+    ready = false # a flag to poll for when the test can continue
+    callback = createSpy "callback"
+    runs ->
+      # force the flag to finish execution regardles of state of promise.
+      @promise.fin -> ready = true # turn the flag to true
+      @promise.then(callback)
+    waitsFor (-> ready), "promise to be resolved", 10
+    runs ->
+      expect( callback ).toHaveBeenCalled()
+      # Always offer a way for unhandle exceptions to get re-thrown
+      @promise.done()
+```
+
+A little but more code but now we can guarantee that when we expect the
+callback to have been called the `then` method will have had a chance to
+finish.
