@@ -23,7 +23,7 @@ function HttpTestButton(message, url) {
 HttpTestButton.prototype.onClick = function() {
 	HttpClient.request(this.url)
 		.fail(function(reason) {
-			notify("Error: " + reason.status + " - " + reason.message);
+			notify("Error: " + reason.status + " - " + reason.message, "Rejected");
 		})
 		.get("data")
 		.get("message")

@@ -12,7 +12,7 @@ function ModalPopup() {
 		barColor:        "white",
 		translucent:     false,
 		statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
-		backgroundColor: "gray"
+		backgroundColor: "white"
 	});
 	this.navWin = Ti.UI.iOS.createNavigationWindow({
 		window:          this.win,
