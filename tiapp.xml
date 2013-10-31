@@ -18,7 +18,7 @@
 
   <guid>2fd12a86-9c07-4c91-bd95-2b86c8fc755a</guid>
 
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <publisher>Devin Weaver</publisher>
   <url>http://tritarget.org/</url>
   <description>An example on using promises in a Titanium application</description>

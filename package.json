@@ -1,7 +1,7 @@
 {
   "name": "promises-titanium-example",
   "description": "An example on using promises in a Titanium application",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "authors": [
     { "name": "Devin Weaver", "email": "suki@tritarget,org" }
   ],
