@@ -3,6 +3,7 @@ global.Ti = global.Titanium = require("mockti")
 # Some defaults that mockti is missing
 global.Titanium.Platform.displayCaps.getDensity = -> "medium"
 global.Titanium.Filesystem.separator = "/"
+global.Titanium.UI.iOS.createNavigationWindow = global.Titanium.UI.createWindow
 
 # Store a reference to the original proxyquire function
 orig_proxyquire = require("proxyquire")
