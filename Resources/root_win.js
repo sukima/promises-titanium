@@ -15,6 +15,8 @@ function RootWin() {
 		exitOnClose:     true
 	});
 
+	this.navWin = Ti.UI.iOS.createNavigationWindow({window: this.win});
+
 	buildComponents.call(this);
 
 	this.win.addEventListener("close", Util.bind(this.onDestroy, this));
@@ -25,18 +27,19 @@ RootWin.prototype.onDestroy = function() {
 	this.timeoutTestButton = null;
 	this.modalTestButton = null;
 	this.httpButtons = null;
+	this.navWin = null;
 	this.win = null;
 };
 
 // open()
 RootWin.prototype.open = function() {
-	this.win.open();
+	this.navWin.open();
 	return this;
 };
 
 // close()
 RootWin.prototype.close = function() {
-	this.win.close();
+	this.navWin.close();
 	return this;
 };
 

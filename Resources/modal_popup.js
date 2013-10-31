@@ -11,6 +11,10 @@ function ModalPopup() {
 		title:           "Can haz name?",
 		backgroundColor: "gray"
 	});
+	this.navWin = Ti.UI.iOS.createNavigationWindow({
+		window: this.win,
+		modal:  true
+	});
 	this.label = Ti.UI.createLabel({
 		text:  "Dear kind user, what is your name?",
 		width: "90%",
@@ -35,8 +39,8 @@ function ModalPopup() {
 
 	onClickBind = Util.bind(this.onButtonClick, this);
 
-	this.win.addEventListener("open", Util.bind(this.onOpen, this));
-	this.win.addEventListener("close", Util.bind(this.onDestroy, this));
+	this.navWin.addEventListener("open", Util.bind(this.onOpen, this));
+	this.navWin.addEventListener("close", Util.bind(this.onDestroy, this));
 	this.name_input.addEventListener("return", Util.partial(onClickBind, "submit"));
 	this.submit_button.addEventListener("click", Util.partial(onClickBind, "submit"));
 	this.cancel_button.addEventListener("click", Util.partial(onClickBind, "cancel"));
@@ -56,6 +60,7 @@ ModalPopup.prototype.onDestroy = function() {
 	this.submit_button = null;
 	this.name_input = null;
 	this.label = null;
+	this.navWin = null;
 	this.win = null;
 };
 
@@ -78,12 +83,12 @@ ModalPopup.prototype.promise = function() {
 };
 
 ModalPopup.prototype.open = function() {
-	this.win.open({modal: true});
+	this.navWin.open({modal: true});
 	return this;
 };
 
 ModalPopup.prototype.close = function() {
-	this.win.close();
+	this.navWin.close();
 	return this;
 };
 
