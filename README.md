@@ -19,3 +19,19 @@ Once ready run the following in the projects working directory.
 
 This will spawn a small express server for demo uses and then will build the
 application and spawn it in the iOS simulator.
+
+## How promises are used in titanium
+
+Promises offer a convenient way to make syntactical and logical sense of the
+confusing nature of asynchronous code. If your reading this then you most
+likely know what the patterns are surrounding callbacks and the difficulties
+they pose in code readability and consistency.
+
+In this project I outlined three use cases where asynchronous code is used and
+how promises *could* be implemented to help.
+
+#### Thread blocking timeouts
+
+#### Modal windows / controls
+
+#### HTTP Requests
