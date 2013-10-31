@@ -9,6 +9,9 @@ function ModalPopup() {
 	this.defer = Q.defer();
 	this.win = Ti.UI.createWindow({
 		title:           "Can haz name?",
+		barColor:        "white",
+		translucent:     false,
+		statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
 		backgroundColor: "gray"
 	});
 	this.navWin = Ti.UI.iOS.createNavigationWindow({

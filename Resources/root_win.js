@@ -12,6 +12,9 @@ function RootWin() {
 		title:           "Example Applicaiton",
 		layout:          "vertical",
 		backgroundColor: "white",
+		barColor:        "white",
+		translucent:     false,
+		statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
 		exitOnClose:     true
 	});
 
