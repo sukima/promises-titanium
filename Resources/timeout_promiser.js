@@ -1,22 +1,26 @@
 // TimeoutPromiser - A simple setTimeout based countdown module
 /*jshint eqnull:true */
-var Q = require("q");
+var
+	Q = require("q"),
+	TimeoutPromiser = {};
 
-exports.run = function() {
+TimeoutPromiser.timeout = 1000;
+TimeoutPromiser.steps   = 10;
+
+TimeoutPromiser.run = function() {
 	var
 		defer        = Q.defer(),
-		timeout      = 1000,
-		currentCount = 11;
+		currentCount = TimeoutPromiser.steps + 1;
 
 	function update() {
 		currentCount--;
 		if (currentCount > 0) {
-			if (currentCount < 6 && randomFail()) {
+			if (currentCount < 6 && TimeoutPromiser.randomFail()) {
 				defer.reject("Random error");
 			}
 			else {
 				defer.notify(currentCount);
-				setTimeout(update, timeout);
+				setTimeout(update, TimeoutPromiser.timeout);
 			}
 		}
 		else {
@@ -29,8 +33,9 @@ exports.run = function() {
 	return defer.promise;
 };
 
-function randomFail() {
+TimeoutPromiser.randomFail = function() {
 	return (Math.random() > 0.8);
-}
+};
 
+module.exports = TimeoutPromiser;
 /* vim:set ts=2 sw=2 noet fdm=marker: */
