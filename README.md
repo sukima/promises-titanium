@@ -43,6 +43,27 @@ how promises *could* be implemented to help.
 
 #### Timeouts / delays
 
+`setTimeout` offers a convenient way to delay things. A sample implementation
+of such a function could look like:
+
+```JavaScript
+function delayed(ms) {
+  var defer = Q.defer();
+  setTimeout(defer.resolve, ms);
+  return defer.promise;
+}
+
+delayed(1000).then(function () {
+  console.log("It finished!");
+});
+
+// Q does this for you with Q.delay()
+```
+
+A timeout loop is illustrated in `Resources/timeout_promiser.js`. This pattern
+can be useful to break up long running processing into small chunks allowing
+the current JavaScript context to avoid getting blocked.
+
 #### Modal windows / controls
 
 #### HTTP Requests
