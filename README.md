@@ -6,7 +6,7 @@ An example on using promises in a Titanium application.
 
 - [Getting Started](#getting-started)
 - [How promises are used in titanium](#how-promises-are-used-in-titanium)
-    - [Thread blocking timeouts](#thread-blocking-timeouts)
+    - [Timeouts / delays](#timeouts--delays)
     - [Modal windows / controls](#modal-windows--controls)
     - [HTTP Requests](#http-requests)
 - [Tests](#tests)
@@ -41,7 +41,7 @@ they pose in code readability and consistency.
 In this project I outlined three use cases where asynchronous code is used and
 how promises *could* be implemented to help.
 
-#### Thread blocking timeouts
+#### Timeouts / delays
 
 #### Modal windows / controls
 
