@@ -22,10 +22,6 @@ function HttpTestButton(message, url) {
 
 HttpTestButton.prototype.onClick = function() {
 	HttpClient.request(this.url)
-		.fail(function(reason) {
-			Ti.API.info("[HttpTestButton] HTTP Request completed unsuccessfully");
-			notify("Error: " + reason.status + " - " + reason.message, "Rejected");
-		})
 		.then(function(value) {
 			Ti.API.info("[HttpTestButton] HTTP Request completed successfully");
 			return value;
@@ -33,7 +29,10 @@ HttpTestButton.prototype.onClick = function() {
 		.get("data")
 		.get("message")
 		.then(notify)
-		.done();
+		.fail(function(reason) {
+			Ti.API.info("[HttpTestButton] HTTP Request completed unsuccessfully");
+			notify("Error: " + reason.status + " - " + reason.message, "Rejected");
+		}).done();
 
 	Ti.API.debug("[HttpTestButton] HTTP Request Started");
 };
