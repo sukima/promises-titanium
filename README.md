@@ -66,6 +66,12 @@ the current JavaScript context to avoid getting blocked.
 
 #### Modal windows / controls
 
+Sometimes user interaction is required but your only interested in a one time
+result. Unlike events which are triggered more than once. Some user interaction
+is one-off. For example a popup message with choices. Or a modal login screen.
+
+An example of such a component is in `Resources/modal_popup.js`.
+
 #### HTTP Requests
 
 ## Tests
