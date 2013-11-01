@@ -74,6 +74,39 @@ An example of such a component is in `Resources/modal_popup.js`.
 
 #### HTTP Requests
 
+One of the most common use cases is to handle HTTP request. Several
+implementation exist which convert to promises. The most basic is illustrated
+in `Resources/http_client.js` which uses the Titamium.Network.HTTPClient
+module.
+
+For an example on the simplicity of making a promise based getter method that
+uses Node's HTTP module (this is not Titanium but here for reference and
+illustration):
+
+```JavaScript
+http = require('http');
+function httpGet(url) {
+  var data = "", defer = Q.defer();
+  http.get(url, function (res) {
+    if (res.statusCode !== 200) {
+      defer.reject("Bad HTTP: " + res.statusCode);
+      return;
+    }
+    res.on("error", defer.reject);
+    res.on("data", function(chunk) { data += chunk; });
+    res.on("end", function() { defer.resolve(data); });
+  });
+  return defer.promise;
+}
+
+// JSON: {"message":"test"}
+httpGet("http://example.com/sample.json")
+  .then(JSON.parse)
+  .get("message")
+  .then(console.log, console.log)
+  .done();
+```
+
 ## Tests
 
 This project uses jasmine-node to run tests on the application. It is Node
