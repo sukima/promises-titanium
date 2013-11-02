@@ -2,7 +2,8 @@
 /*jshint eqnull:true */
 var
 	Util       = require("util"),
-	HttpClient = require("http_client");
+	HttpClient = require("http_client"),
+	ModalPopup = require("modal_popup");
 
 function HttpTestButton(message, url, login_required) {
 	this.url = url;
@@ -22,8 +23,33 @@ function HttpTestButton(message, url, login_required) {
 }
 
 HttpTestButton.prototype.onClick = function() {
-	HttpClient.request(this.url)
-		.then(function(value) {
+	var promise, getNameModal, url = this.url;
+
+	function validateName(name) {
+		if (name === "") { throw "empty name"; }
+		return name;
+	}
+
+	if (this.login_required) {
+		getNameModal = new ModalPopup();
+		promise = getNameModal.open().promise()
+			.then(validateName)
+			.fail(function(reason) {
+				// Convert a ModalPopup rejection reason into a HttpClient rejection
+				// message so we don't fail the following error handlers. We throw, not
+				// return otherwise a return value creates a fulfilled promise not a
+				// rejected one.
+				throw {status: 0, message: reason};
+			})
+			.then(function(name) {
+				return HttpClient.request(url + "/" + name);
+			});
+	}
+	else {
+		promise = HttpClient.request(url);
+	}
+
+	promise.then(function(value) {
 			Ti.API.info("[HttpTestButton] HTTP Request completed successfully");
 			return value;
 		})

@@ -55,7 +55,8 @@ function buildComponents() {
 	this.httpButtons = [
 		new HttpTestButton("success", "http://localhost:3000/good_json"),
 		new HttpTestButton("parse error", "http://localhost:3000/bad_json"),
-		new HttpTestButton("not found", "http://localhost:3000/not_found")
+		new HttpTestButton("not found", "http://localhost:3000/not_found"),
+		new HttpTestButton("needs user input", "http://localhost:3000/login", true)
 	];
 
 	this.win.add(this.timeoutTestButton.button);
