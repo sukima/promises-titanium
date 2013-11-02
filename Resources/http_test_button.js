@@ -4,8 +4,9 @@ var
 	Util       = require("util"),
 	HttpClient = require("http_client");
 
-function HttpTestButton(message, url) {
+function HttpTestButton(message, url, login_required) {
 	this.url = url;
+	this.login_required = login_required;
 	this.title = "Try HTTP load (" + message + ")";
 	this.button = Ti.UI.createButton({
 		title:           this.title,
