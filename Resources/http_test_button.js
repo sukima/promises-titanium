@@ -1,6 +1,7 @@
 // HttpTestButton - A button for testing a timeout with promises
 /*jshint eqnull:true */
 var
+	Q          = require("q"),
 	Util       = require("util"),
 	HttpClient = require("http_client"),
 	ModalPopup = require("modal_popup");
@@ -34,22 +35,22 @@ HttpTestButton.prototype.onClick = function() {
 		getNameModal = new ModalPopup();
 		promise = getNameModal.open().promise()
 			.then(validateName)
+			// Convert a ModalPopup rejection reason into a HttpClient rejection
+			// message so we don't fail the following error handlers. We throw, not
+			// return otherwise a return value creates a fulfilled promise not a
+			// rejected one.
 			.fail(function(reason) {
-				// Convert a ModalPopup rejection reason into a HttpClient rejection
-				// message so we don't fail the following error handlers. We throw, not
-				// return otherwise a return value creates a fulfilled promise not a
-				// rejected one.
 				throw {status: 0, message: reason};
 			})
-			.then(function(name) {
-				return HttpClient.request(url + "/" + name);
-			});
-	}
-	else {
-		promise = HttpClient.request(url);
-	}
+			// Return a new request url now with a name value
+			.then(function(name) { return url + "/" + name; });
+		}
+		else {
+			promise = Q(url);
+		}
 
-	promise.then(function(value) {
+	promise.then(function(url) { return HttpClient.request(url); })
+		.then(function(value) {
 			Ti.API.info("[HttpTestButton] HTTP Request completed successfully");
 			return value;
 		})
