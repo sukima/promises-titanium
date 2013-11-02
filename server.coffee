@@ -5,6 +5,10 @@ app.get "/good_json", (req, res) ->
   console.log "[INFO] [Server] Request for /good_json, responding with 200"
   res.json message: "It Works!"
 
+app.get "/login/:name", (req, res) ->
+  console.log "[INFO] [Server] Request for /login/#{req.params.name}, responding with 200"
+  res.json message: "Hello #{req.params.name}, How are you?"
+
 app.get "/bad_json", (req, res) ->
   console.log "[INFO] [Server] Request for /bad_json, responding with 200 ('Bad JSON')"
   res.send 200, "Bad JSON"
