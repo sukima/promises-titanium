@@ -23,7 +23,8 @@
   "scripts": {
     "test": "sh spec/spec_runner.sh",
     "start": "bash launch.sh",
-    "debug": "bash launch.sh -d"
+    "debug": "bash launch.sh -d",
+    "rdebug": "bash launch.sh -d -r"
   },
   "engines": {
     "node": ">=0.8"
