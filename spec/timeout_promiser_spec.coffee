@@ -47,8 +47,7 @@ describe "TimeoutPromiser", ->
         @promise.done()
 
     it "should resolve the promise when timer runs out", ->
-      runs ->
-        jasmine.Clock.tick 301 # timeout * steps + 1
+      runs -> jasmine.Clock.tick 301 # timeout * steps + 1
       waits(1)
       runs ->
         expect( @promise.isFulfilled() ).toBeTruthy()
@@ -57,8 +56,6 @@ describe "TimeoutPromiser", ->
     # Since steps is set to 3 we don't have to worry about the count < 6 logic.
     it "should reject the promise when randomFail returns false", ->
       TimeoutPromiser.randomFail.andReturn true
-      runs ->
-        jasmine.Clock.tick 301 # timeout * steps + 1
+      runs -> jasmine.Clock.tick 301 # timeout * steps + 1
       waits(1)
-      runs ->
-        expect( @promise.isRejected() ).toBeTruthy()
+      runs -> expect( @promise.isRejected() ).toBeTruthy()
