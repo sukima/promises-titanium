@@ -26,7 +26,7 @@ describe "TimeoutPromiser", ->
   describe "#run", ->
 
     beforeEach ->
-      @promise = TimeoutPromiser.run()
+      runs -> @promise = TimeoutPromiser.run()
 
     it "should return a promise", ->
       expect( @promise.then ).toBeDefined()
@@ -62,4 +62,3 @@ describe "TimeoutPromiser", ->
       waits(1)
       runs ->
         expect( @promise.isRejected() ).toBeTruthy()
-        @promise.done()
