@@ -60,7 +60,7 @@ delayed(1000).then(function () {
 // Q does this for you with Q.delay()
 ```
 
-A timeout loop is illustrated in `Resources/timeout_promiser.js`. This pattern
+A timeout loop is illustrated in `app/lib/timeout_promiser.js`. This pattern
 can be useful to break up long running processing into small chunks allowing
 the current JavaScript context to avoid getting blocked.
 
@@ -70,13 +70,13 @@ Sometimes user interaction is required but your only interested in a one time
 result. Unlike events which are triggered more than once. Some user interaction
 is one-off. For example a popup message with choices. Or a modal login screen.
 
-An example of such a component is in `Resources/modal_popup.js`.
+An example of such a component is in `app/controllers/modal_popup.js`.
 
 #### HTTP Requests
 
 One of the most common use cases is to handle HTTP request. Several
 implementation exist which convert to promises. The most basic is illustrated
-in `Resources/http_client.js` which uses the Titamium.Network.HTTPClient
+in `app/lib/http_client.js` which uses the Titamium.Network.HTTPClient
 module.
 
 For an example on the simplicity of making a promise based getter method that
