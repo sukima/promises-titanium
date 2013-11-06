@@ -1,5 +1,3 @@
-var ModalPopup = require("modal_popup");
-
 $.button.addEventListener("click", onClick);
 
 function onClick() {
