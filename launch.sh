@@ -7,9 +7,6 @@ APP_NAME=PromisesExample
 PATH=node_modules/.bin:$PATH
 while test $# -gt 0; do
     case "$1" in
-        -i)
-            install="yes"
-            ;;
         -d)
             DEBUG="--log-level debug"
             ;;
@@ -25,9 +22,7 @@ while test $# -gt 0; do
     shift
 done
 
-if [ "$install" = "yes" ]; then
-  exec titanium build -p ios --ios-version 7.0 -T device
-elif [ "$android" = "yes" ]; then
+if [ "$android" = "yes" ]; then
   titanium build --platform android --build-only --avd-id 1 $DEBUG && \
   adb uninstall $APP_ID
   adb install build/android/bin/app.apk && \
