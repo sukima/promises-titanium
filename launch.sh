@@ -22,11 +22,18 @@ while test $# -gt 0; do
     shift
 done
 
+coffee server.coffee &
+server=$!
+trap "kill $server" KILL
+
 if [ "$android" = "yes" ]; then
   titanium build --platform android --build-only --avd-id 1 $DEBUG && \
   adb uninstall $APP_ID
   adb install build/android/bin/app.apk && \
   adb shell am start ${APP_ID}/.${APP_NAME}Activity
 else
-  exec titanium build --platform ios --ios-version 7.0 --retina --tall $DEBUG $remote
+  titanium build --platform ios --ios-version 7.0 --retina --tall $DEBUG $remote
 fi
+
+echo
+echo "killing server ($server)"
