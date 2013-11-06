@@ -1,8 +1,8 @@
 #!/bin/bash
 
-APP_ID=org.tritarget.wnlmobile.app
+APP_ID=com.tritarget.promises.example.app
 # Must be capitalized!
-APP_NAME=WNLMobile
+APP_NAME=PromisesExample
 
 PATH=node_modules/.bin:$PATH
 while test $# -gt 0; do
