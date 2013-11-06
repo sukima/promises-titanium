@@ -1,6 +1,6 @@
 ".container": {
 	backgroundColor: "white",
-  layout:         "vertical"
+	layout:          "vertical"
 },
 "Label": {
 	width:  Ti.UI.SIZE,
