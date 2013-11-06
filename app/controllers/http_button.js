@@ -6,6 +6,8 @@ var options    = arguments[0] || {};
 $.button.title = "HTTP Test (" + options.subtitle + ")";
 $.button.addEventListener("click", onClick);
 
+options.login = (options.login === "true");
+
 function onClick() {
 	var promise, getNameModal, url = options.href;
 

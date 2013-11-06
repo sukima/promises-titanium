@@ -2,5 +2,9 @@
 	<Window class="container">
 		<Require id="timeout_button" src="timeout_button" type="view"/>
 		<Require id="modal_popup_button" src="modal_popup_button" type="view"/>
+		<Require id="http_button0" src="http_button" subtitle="success"          href="http://localhost:3000/good_json" login="false"/>
+		<Require id="http_button1" src="http_button" subtitle="parse error"      href="http://localhost:3000/bad_json"  login="false"/>
+		<Require id="http_button2" src="http_button" subtitle="not found"        href="http://localhost:3000/not_found" login="false"/>
+		<Require id="http_button3" src="http_button" subtitle="needs user input" href="http://localhost:3000/login"     login="true"/>
 	</Window>
 </Alloy>
