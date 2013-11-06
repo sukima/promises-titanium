@@ -1,4 +1,3 @@
-var ModalPopup = require("modal_popup");
 var HttpClient = require("http_client");
 var Q          = require("q");
 var options    = arguments[0] || {};
@@ -17,10 +16,11 @@ function onClick() {
 	}
 
 	if (options.login) {
-		getNameModal = new ModalPopup();
-		promise = getNameModal.open().promise()
+		getNameModal = Alloy.createController("modal_popup");
+		getNameModal.getView().open();
+		promise = getNameModal.promise()
 			.then(validateName)
-			// Convert a ModalPopup rejection reason into a HttpClient rejection
+			// Convert a getNameModal rejection reason into a HttpClient rejection
 			// message so we don't fail the following error handlers. We throw, not
 			// return otherwise a return value creates a fulfilled promise not a
 			// rejected one.
@@ -29,10 +29,10 @@ function onClick() {
 			})
 			// Return a new request url now with a name value
 			.then(function(name) { return url + "/" + name; });
-		}
-		else {
-			promise = Q(url);
-		}
+	}
+	else {
+		promise = Q(url);
+	}
 
 	promise.then(function(url) { return HttpClient.request(url); })
 		.then(function(value) {
