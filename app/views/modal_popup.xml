@@ -1,0 +1,20 @@
+<Alloy>
+  <NavigationWindow id="win" platform="ios" class="modal_window">
+    <Window>
+      <LeftNavButton>
+        <Button id="cancel_button"></Button>
+      </LeftNavButton>
+      <RightNavButton>
+        <Button id="submit_button"></Button>
+      </RightNavButton>
+      <Label class="name_input_label"/>
+      <TextField id="name_input"/>
+    </Window>
+  </NavigationWindow>
+  <Window id="win" class="modal_window" platform="android">
+    <Button id="cancel_button"/>
+    <Button id="submit_button"/>
+    <Label class="name_input_label"/>
+    <TextField id="name_input"/>
+  </Window>
+</Alloy>

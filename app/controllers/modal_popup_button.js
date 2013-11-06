@@ -5,8 +5,9 @@ $.button.addEventListener("click", onClick);
 function onClick() {
 	var popup, promise;
 
-	popup = new ModalPopup();
-	promise = popup.open().promise();
+	popup = Alloy.createController("modal_popup");
+	promise = popup.promise();
+	popup.getView().open();
 
 	Ti.API.debug("[ModalTestButton] Modal Popup opened");
 

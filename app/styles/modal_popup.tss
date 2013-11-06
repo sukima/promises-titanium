@@ -1,0 +1,33 @@
+"#cancel_button": {
+	title: "Cancel",
+	systemButton: Ti.UI.iPhone.SystemButton.CANCEL
+},
+"#submit_button": {
+	title: "Save",
+	systemButton: Ti.UI.iPhone.SystemButton.DONE
+},
+"#name_input": {
+	width:           "90%",
+	height:          40,
+	backgroundColor: "white",
+	borderWidth:     2,
+	top:             70,
+	borderStyle:     Titanium.UI.INPUT_BORDERSTYLE_BEZEL,
+	hintText:        "This space intentionally left blank",
+	returnKeyType:   Ti.UI.RETURNKEY_DONE
+},
+".name_input_label": {
+	text:  "Dear kind user, what is your name?",
+	width: "90%",
+	top:   30
+},
+"Window": {
+	title:           "Can haz name?",
+	barColor:        "white",
+	translucent:     false,
+	statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
+	backgroundColor: "white"
+},
+".modal_window": {
+	modal: true
+}
