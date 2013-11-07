@@ -21,7 +21,7 @@
   <description>An example on using promises in a Titanium application</description>
   <copyright>Devin Weaver 2013 (CC BY 3.0)</copyright>
 
-  <icon>default_app_logo.png</icon>
+  <icon>appicon.png</icon>
   <persistent-wifi>false</persistent-wifi>
   <prerendered-icon>false</prerendered-icon>
   <statusbar-style>opaque</statusbar-style>
