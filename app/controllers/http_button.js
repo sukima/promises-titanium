@@ -36,18 +36,20 @@ function onClick() {
 
 	promise.then(function(url) { return HttpClient.request(url); })
 		.then(function(value) {
-			Ti.API.info("[HttpTestButton] HTTP Request completed successfully");
+			Ti.API.info("[HttpButton] HTTP Request completed successfully");
+			Ti.API.debug("[HttpButton] Value: " + JSON.stringify(value, null, 2));
 			return value;
 		})
 		.get("data")
 		.get("message")
 		.then(notify)
 		.fail(function(reason) {
-			Ti.API.info("[HttpTestButton] HTTP Request completed unsuccessfully");
+			Ti.API.info("[HttpButton] HTTP Request completed unsuccessfully");
+			Ti.API.debug("[HttpButton] Reason for rejection: " + reason);
 			notify("Error: " + reason.status + " - " + reason.message, "Rejected");
 		}).done();
 
-	Ti.API.debug("[HttpTestButton] HTTP Request Started");
+	Ti.API.debug("[HttpButton] HTTP Request Started");
 }
 
 // Helper methods (private)
