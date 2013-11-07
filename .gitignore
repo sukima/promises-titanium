@@ -8,3 +8,4 @@ Resources/
 node_modules/
 .vimrc
 tags
+plugins/**/*.pyc
