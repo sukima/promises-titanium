@@ -34,8 +34,10 @@ if has_alloy
 
 # Hides console output from program
 # Keep references in case you need to test against values (probably a bad idea)
-exports.LOGS = LOGS = { error: [], info:  [], debug: [], warn: [] }
-global.Titanium.API.error = (val) -> LOGS.error.push(val)
-global.Titanium.API.info  = (val) -> LOGS.info.push(val)
-global.Titanium.API.debug = (val) -> LOGS.debug.push(val)
-global.Titanium.API.warn  = (val) -> LOGS.warn.push(val)
+exports.LOGS = LOGS = []
+global.Titanium.API.error = (val) -> LOGS.push {level: "ERROR", message: val}
+global.Titanium.API.info  = (val) -> LOGS.push {level: "INFO", message: val}
+global.Titanium.API.debug = (val) -> LOGS.push {level: "DEBUG", message: val}
+global.Titanium.API.warn  = (val) -> LOGS.push {level: "WARN", message: val}
+exports.dumpLogs = ->
+  console.log "[#{level}] #{message}" for {level, message} in LOGS
