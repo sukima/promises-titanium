@@ -1,8 +1,16 @@
 ".test_button": {
-	backgroundColor: "grey",
+	color:           "black",
+	backgroundColor: "#D6D6D6",
 	width:           "80%",
 	height:          40,
 	top:             20,
 	borderRadius:    6,
 	borderWidth:     2
+},
+".test_button[platform=android]": {
+	color:           "black",
+	backgroundColor: "#86CAFF",
+	borderColor:     "black",
+	borderWidth:     2,
+	height:          80
 }

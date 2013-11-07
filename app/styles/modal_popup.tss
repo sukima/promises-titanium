@@ -1,32 +1,58 @@
-"#cancel_button": {
+"#cancel_button[platform=android]": {
 	title: "Cancel",
+	top:    20,
+	left:   20,
+	width:  200,
+	height: 80
+},
+"#submit_button[platform=android]": {
+	title:  "Save",
+	top:    20,
+	right:  20,
+	width:  200,
+	height: 80
+},
+"#cancel_button[platform=ios]": {
 	systemButton: Ti.UI.iPhone.SystemButton.CANCEL
 },
-"#submit_button": {
-	title: "Save",
+"#submit_button[platform=ios]": {
 	systemButton: Ti.UI.iPhone.SystemButton.DONE
 },
 "#name_input": {
 	width:           "90%",
-	height:          40,
-	backgroundColor: "white",
+	borderColor:     "black",
+	backgroundColor: "#D6D6D6",
 	borderWidth:     2,
-	top:             70,
-	borderStyle:     Titanium.UI.INPUT_BORDERSTYLE_BEZEL,
 	hintText:        "This space intentionally left blank",
 	returnKeyType:   Ti.UI.RETURNKEY_DONE
+},
+"#name_input[platform=ios]": {
+	top:             70,
+	height:          40,
+	borderStyle:     Titanium.UI.INPUT_BORDERSTYLE_BEZEL
+},
+"#name_input[platform=android]": {
+	top:             340,
+	height:          80
 },
 ".name_input_label": {
 	text:  "Dear kind user, what is your name?",
 	width: "90%",
 	top:   30
 },
+".name_input_label[platform=android]": {
+	top:   160,
+	font:  { fontSize:48 },
+	color: "black"
+},
 "Window": {
 	title:           "Can haz name?",
 	barColor:        "white",
 	translucent:     false,
-	statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
 	backgroundColor: "white"
+},
+"Window[platform=ios]": {
+	statusBarStyle: Ti.UI.iPhone.StatusBar.GRAY
 },
 ".modal_window": {
 	modal: true
