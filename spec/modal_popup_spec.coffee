@@ -1,12 +1,11 @@
-describe "ModalPopup", ->
+describe "controllers/modal_popup", ->
   # Load the ModalPopup now with the correct Util module.
-  ModalPopup = proxyquire("modal_popup")
+  ModalPopupController = proxyquire("alloy/controllers/modal_popup")
 
   beforeEach ->
-    @popup = new ModalPopup
+    @popup = new ModalPopupController
     @promise = @popup.promise()
-    spyOn @popup, "open"
-    spyOn @popup, "close"
+    @closeSpy = spyOn(@popup.getView(), "close")
     spyOn(@popup.name_input, "getValue").andReturn "name value"
 
   describe "#promise", ->
@@ -20,12 +19,12 @@ describe "ModalPopup", ->
       ready = false
       runs ->
         @promise.fin -> ready = true
-        @popup.onButtonClick("submit")
+        @popup.submit_button.fireEvent("click")
       waitsFor (-> ready), "promise to be resolved", 10
       runs -> @promise.done()
 
     it "should close the window", -> runs ->
-      expect( @popup.close ).toHaveBeenCalled()
+      expect( @closeSpy ).toHaveBeenCalled()
 
     it "should fulfill the promise with the value of the input box", -> runs ->
       expect( @promise.isFulfilled() ).toBeTruthy()
@@ -37,11 +36,11 @@ describe "ModalPopup", ->
       ready = false
       runs ->
         @promise.fin -> ready = true
-        @popup.onButtonClick("cancel")
+        @popup.cancel_button.fireEvent("click")
       waitsFor (-> ready), "promise to be resolved", 10
 
     it "should close the window", -> runs ->
-      expect( @popup.close ).toHaveBeenCalled()
+      expect( @closeSpy ).toHaveBeenCalled()
 
     it "should reject the promise with 'cancled' as a reason", -> runs ->
       expect( @promise.isRejected() ).toBeTruthy()
