@@ -6,3 +6,5 @@ tmp/
 .map
 Resources/
 node_modules/
+.vimrc
+tags
