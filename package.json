@@ -15,14 +15,15 @@
     "proxyquire": "~> 0.4.0",
     "mockti": "~> 0.1.0",
     "express": "~3.4.4",
-    "alloy": "~1.2.2"
+    "alloy": "~1.2.2",
+    "q": "~0.9.7"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/sukima/promises-titanium-example.git"
   },
   "scripts": {
-    "test": "sh spec/spec_runner.sh",
+    "test": "coffee spec/specRunner.coffee",
     "start": "bash launch.sh",
     "debug": "bash launch.sh -d",
     "rdebug": "bash launch.sh -d -r"
