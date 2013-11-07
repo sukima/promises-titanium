@@ -24,7 +24,7 @@ has_alloy = do ->
   existsSync resolve(__dirname, "../Resources/alloy")
 
 if has_alloy
-  Alloy = require("../Resources/alloy")
+  exports.Alloy = Alloy = require("../Resources/alloy")
   Alloy["@noCallThru"] = true
 
   BaseController = orig_proxyquire(
