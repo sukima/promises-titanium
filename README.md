@@ -2,6 +2,8 @@
 
 An example on using promises in a Titanium application.
 
+The `non_alloy` branch does *not* use Alloy. If you want to see examples based on alloy check out the `master` branch.
+
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Getting Started](#getting-started)
