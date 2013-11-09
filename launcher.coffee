@@ -49,6 +49,8 @@ fetchAppInfo = ->
     app_name = app_name.replace(/\s+/, "")
     {app_id, app_name}
 
+outputError = (err) -> console.error "\nThere were errors (#{err})"
+
 while args.length
   arg = args.shift()
 
@@ -57,6 +59,7 @@ while args.length
       console.log "Usage: launcher.coffee [-vhdia] [-s simtype] [--sdk version]"
       console.log "  -v, --verbose      Print out as much logging as possible"
       console.log "  -h, --help         This cruft"
+      console.log "  -c, --clean        Clean up build files"
       console.log "  -d, --debug        Attach to a running ti-inspector server for debugging"
       console.log "  -i, --install      Build and install on an attached iOS device"
       console.log "  -a, --android      Build and install on an attached Android device"
@@ -65,6 +68,8 @@ while args.length
       process.exit 1
     when "-v", "--verbose"
       options.verbose = on
+    when "-c", "--clean"
+      options.clean = yes
     when "-d", "--debug"
       options.debug = on
     when "-i", "--install"
@@ -77,6 +82,15 @@ while args.length
       options.sdk = args.shift()
     else
       options.extraArgs.push arg
+
+if options.clean
+  promisedSpawn(titanium, "clean").then ->
+    process.exit 0
+  .fail (err) ->
+    outputError err
+    process.exit 127
+  .done()
+  return # Stop processing this file
 
 simargs = switch options.simtype
   when "iphone"
@@ -112,6 +126,6 @@ waitingForTitanium.then (val) ->
 .then ->
   process.exit 0
 .fail (err) ->
-  console.error "\nThere were errors (#{err})" unless gracefullyExit
+  outputError err unless gracefullyExit
   process.exit 127
 .done()
