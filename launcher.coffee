@@ -65,6 +65,8 @@ while args.length
       console.log "  -a, --android      Build and install on an attached Android device"
       console.log "  -s, --sim simtype  One of: iphone, iphone4, iphone5 (default)"
       console.log "  --sdk version      Choose the SDK version (default: 7.0)"
+      console.log "  --                 Stop reading arguments and pass everything else"
+      console.log "                     directly to the titanium cli"
       process.exit 1
     when "-v", "--verbose"
       options.verbose = on
@@ -80,6 +82,9 @@ while args.length
       options.simtype = args.shift()
     when "--sdk"
       options.sdk = args.shift()
+    when "--"
+      options.extraArgs = options.extraArgs.concat args
+      args = []
     else
       options.extraArgs.push arg
 
