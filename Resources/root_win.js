@@ -46,15 +46,16 @@ RootWin.prototype.close = function() {
 function buildComponents() {
 	var i, len;
 
-	var deviceIp = "192.168.198.1"; 
+	var serverIp = "obscure-ridge-4542.herokuapp.com";
+	var serverPort = 80; 
 
 	this.timeoutTestButton = new TimeoutTestButton();
 	this.modalTestButton   = new ModalTestButton();
 	this.httpButtons = [
-		new HttpTestButton("success", "http://" + deviceIp + ":3000/good_json"),
-		new HttpTestButton("parse error", "http://" + deviceIp + ":3000/bad_json"),
-		new HttpTestButton("not found", "http://" + deviceIp + ":3000/not_found"),
-		new HttpTestButton("needs user input", "http://" + deviceIp + ":3000/login", true)
+		new HttpTestButton("success", "http://" + serverIp + ":" + serverPort + "/good_json"),
+		new HttpTestButton("parse error", "http://" + serverIp + ":" + serverPort + "/bad_json"),
+		new HttpTestButton("not found", "http://" + serverIp + ":" + serverPort + "/not_found"),
+		new HttpTestButton("needs user input", "http://" + serverIp + ":" + serverPort + "/login", true)
 	];
 
 	this.win.add(this.timeoutTestButton.button);
