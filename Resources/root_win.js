@@ -11,14 +11,11 @@ function RootWin() {
 	this.win = Ti.UI.createWindow({
 		title:           "Example Applicaiton",
 		layout:          "vertical",
-		backgroundColor: "white",
+		backgroundColor: "black",
 		barColor:        "white",
 		translucent:     false,
-		statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
 		exitOnClose:     true
 	});
-
-	this.navWin = Ti.UI.iOS.createNavigationWindow({window: this.win});
 
 	buildComponents.call(this);
 
@@ -30,19 +27,18 @@ RootWin.prototype.onDestroy = function() {
 	this.timeoutTestButton = null;
 	this.modalTestButton = null;
 	this.httpButtons = null;
-	this.navWin = null;
 	this.win = null;
 };
 
 // open()
 RootWin.prototype.open = function() {
-	this.navWin.open();
+	this.win.open();
 	return this;
 };
 
 // close()
 RootWin.prototype.close = function() {
-	this.navWin.close();
+	this.win.close();
 	return this;
 };
 
@@ -50,13 +46,15 @@ RootWin.prototype.close = function() {
 function buildComponents() {
 	var i, len;
 
+	var deviceIp = "192.168.198.1"; 
+
 	this.timeoutTestButton = new TimeoutTestButton();
 	this.modalTestButton   = new ModalTestButton();
 	this.httpButtons = [
-		new HttpTestButton("success", "http://localhost:3000/good_json"),
-		new HttpTestButton("parse error", "http://localhost:3000/bad_json"),
-		new HttpTestButton("not found", "http://localhost:3000/not_found"),
-		new HttpTestButton("needs user input", "http://localhost:3000/login", true)
+		new HttpTestButton("success", "http://" + deviceIp + ":3000/good_json"),
+		new HttpTestButton("parse error", "http://" + deviceIp + ":3000/bad_json"),
+		new HttpTestButton("not found", "http://" + deviceIp + ":3000/not_found"),
+		new HttpTestButton("needs user input", "http://" + deviceIp + ":3000/login", true)
 	];
 
 	this.win.add(this.timeoutTestButton.button);

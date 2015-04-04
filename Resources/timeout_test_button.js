@@ -7,12 +7,6 @@ var
 function TimeoutTestButton() {
 	this.button = Ti.UI.createButton({
 		title:           "Timeout Test",
-		backgroundColor: "grey",
-		width:           "80%",
-		height:          40,
-		top:             20,
-		borderRadius:    6,
-		borderWidth:     2
 	});
 
 	this.button.addEventListener("click", Util.bind(this.onClick, this));

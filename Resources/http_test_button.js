@@ -12,12 +12,6 @@ function HttpTestButton(message, url, login_required) {
 	this.title = "Try HTTP load (" + message + ")";
 	this.button = Ti.UI.createButton({
 		title:           this.title,
-		backgroundColor: "grey",
-		width:           "80%",
-		height:          40,
-		top:             20,
-		borderRadius:    6,
-		borderWidth:     2
 	});
 
 	this.button.addEventListener("click", Util.bind(this.onClick, this));

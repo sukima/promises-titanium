@@ -11,47 +11,47 @@ function ModalPopup() {
 		title:           "Can haz name?",
 		barColor:        "white",
 		translucent:     false,
-		statusBarStyle:  Ti.UI.iPhone.StatusBar.GRAY,
-		backgroundColor: "white"
-	});
-	this.navWin = Ti.UI.iOS.createNavigationWindow({
-		window:          this.win,
-		modal:           true
+		backgroundColor: "black",
+		layout:          "vertical"
 	});
 	this.label = Ti.UI.createLabel({
 		text:  "Dear kind user, what is your name?",
-		width: "90%",
-		top:   30
 	});
 	this.name_input = Ti.UI.createTextField({
 		width:           "90%",
-		height:          40,
 		backgroundColor: "white",
-		borderWidth:     2,
-		top:             70,
-		borderStyle:     Titanium.UI.INPUT_BORDERSTYLE_BEZEL,
-		hintText:        "This space intentionally left blank",
-		returnKeyType:   Ti.UI.RETURNKEY_DONE
+		color:           "black"
+	});
+	this.buttons_view = Ti.UI.createView({
+		width: Ti.UI.SIZE,  
+		height: Ti.UI.SIZE 
+	});
+	this.buttons_center = Ti.UI.createView({
+		layout: 'horizontal', 
+		width: Ti.UI.SIZE,  
+		height: Ti.UI.SIZE 
 	});
 	this.submit_button = Ti.UI.createButton({
-		systemButton: Ti.UI.iPhone.SystemButton.DONE
+		title: 'submit'
 	});
 	this.cancel_button = Ti.UI.createButton({
-		systemButton: Ti.UI.iPhone.SystemButton.CANCEL
+		title: 'cancel'
 	});
 
 	onClickBind = Util.bind(this.onButtonClick, this);
 
-	this.navWin.addEventListener("open", Util.bind(this.onOpen, this));
-	this.navWin.addEventListener("close", Util.bind(this.onDestroy, this));
+	this.win.addEventListener("open", Util.bind(this.onOpen, this));
+	this.win.addEventListener("close", Util.bind(this.onDestroy, this));
 	this.name_input.addEventListener("return", Util.partial(onClickBind, "submit"));
 	this.submit_button.addEventListener("click", Util.partial(onClickBind, "submit"));
 	this.cancel_button.addEventListener("click", Util.partial(onClickBind, "cancel"));
 
 	this.win.add(this.label);
 	this.win.add(this.name_input);
-	this.win.setLeftNavButton(this.cancel_button);
-	this.win.setRightNavButton(this.submit_button);
+	this.buttons_center.add(this.cancel_button);
+	this.buttons_center.add(this.submit_button);
+	this.buttons_view.add(this.buttons_center);
+	this.win.add(this.buttons_view);
 }
 
 ModalPopup.prototype.onOpen = function() {
@@ -63,7 +63,6 @@ ModalPopup.prototype.onDestroy = function() {
 	this.submit_button = null;
 	this.name_input = null;
 	this.label = null;
-	this.navWin = null;
 	this.win = null;
 };
 
@@ -86,12 +85,12 @@ ModalPopup.prototype.promise = function() {
 };
 
 ModalPopup.prototype.open = function() {
-	this.navWin.open();
+	this.win.open();
 	return this;
 };
 
 ModalPopup.prototype.close = function() {
-	this.navWin.close();
+	this.win.close();
 	return this;
 };
 
