@@ -180,7 +180,7 @@ finish.
 
 ## Android Compatibility
 
-- To make it work in Titanium Studio's debugger in Android, commented out the ES6Generators detection in q.js because it broke Titanium Studio debugger (Titanium does not have ES6 anyway).
+This should work both in iOS and Android. However, to make it work in Titanium Studio's debugger in Android, we made the following change: the ES6Generators detection in q.js is commented out because it broke Titanium Studio debugger (Titanium does not have ES6 anyway).
 
 Known issues and suggestions for Android and Titanium Studio debugger:
 
