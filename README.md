@@ -13,7 +13,7 @@ This fork by @gazialankus applies a number of changes to make it work fine in An
 Known issues in Android and Titanium Studio debugger
 
 - In q.js there are a couple of places where exceptions are thrown intentionally. Debugger stops at them by default, and you have to hit continue. If you don't want this, uncheck Window->Preferences->Studio->JavaScript Debug->Suspend on errors.
-- The fourth button (Try HTTP load (parse error)) freezes the app in debug mode as per this bug: https://jira.appcelerator.org/browse/TIMOB-17375
+- The fourth button (Try HTTP load (parse error)) freezes the app in Titanium Studio's debugger, as per this bug: https://jira.appcelerator.org/browse/TIMOB-17375
 - node-inspector is an alternative debugger that does not have these issues. See https://gist.github.com/ffabreti/8fd551ed321d51d7f458#comment-1393322
 - Trying to run server.coffee from this directory adds the node_modules directory that shows errors in Titanium Studio. Instead, move package.json and server.coffee to a separate directory and run it from there. 
 
