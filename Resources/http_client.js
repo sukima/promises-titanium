@@ -2,7 +2,7 @@
 /*jshint eqnull:true */
 var Q = require("q");
 
-exports.request = function(url) {
+exports.request = function(method, url) {
 	var defer, tiHttpClient;
 
 	defer = Q.defer();
@@ -42,7 +42,7 @@ exports.request = function(url) {
 		timeout: 1000
 	});
 
-	tiHttpClient.open("GET", url, true);
+	tiHttpClient.open(method, url, true);
 	tiHttpClient.send();
 
 	return defer.promise;

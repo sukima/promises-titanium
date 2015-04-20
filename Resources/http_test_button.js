@@ -43,7 +43,7 @@ HttpTestButton.prototype.onClick = function() {
 			promise = Q(url);
 		}
 
-	promise.then(function(url) { return HttpClient.request(url); })
+	promise.then(function(url) { return HttpClient.request('GET', url); })
 		.then(function(value) {
 			Ti.API.info("[HttpTestButton] HTTP Request completed successfully");
 			return value;
