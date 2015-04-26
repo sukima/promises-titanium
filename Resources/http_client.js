@@ -2,7 +2,7 @@
 /*jshint eqnull:true */
 var Q = require("q");
 
-exports.request = function(method, url) {
+exports.request = function(method, url, headers) {
 	var defer, tiHttpClient;
 
 	defer = Q.defer();
@@ -38,11 +38,15 @@ exports.request = function(method, url) {
 		},
 		onsendstream: function(e) {
 			defer.notify(e);
-		},
-		timeout: 1000
+		}
 	});
 
 	tiHttpClient.open(method, url, true);
+	if (typeof headers !== 'undefined') {
+		for (header in headers) {
+			tiHttpClient.setRequestHeader(header, headers[header]);
+		}
+	}
 	tiHttpClient.send();
 
 	return defer.promise;
