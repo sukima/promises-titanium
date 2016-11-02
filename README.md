@@ -134,7 +134,7 @@ When testing promise code in [Jasmine][] you have to remember that despite
 using any mock timer all methods in the [Q library][q] implementation are
 asynchronous.
 
-[Jasmine]: http://pivotal.github.io/jasmine/
+[Jasmine]: http://jasmine.github.io/
 [q]: http://documentup.com/kriskowal/q/
 
 The following example **WILL HAVE PROMBLEMS**:
