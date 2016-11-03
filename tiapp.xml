@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- This file is auto generated from the rake build task. THIS FILE GETS OVERWRITEN -->
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-
-  <sdk-version>3.1.3.GA</sdk-version>
-  <deployment-targets>
-    <target device="tizen">false</target>
-    <target device="mobileweb">false</target>
-    <target device="blackberry">false</target>
-    <target device="iphone">true</target>
-    <target device="ipad">false</target>
-    <target device="android">false</target>
-  </deployment-targets>
-
-  <id>com.tritarget.promises.example.app</id>
-  <name>Promises Example</name>
-
-  <guid>2fd12a86-9c07-4c91-bd95-2b86c8fc755a</guid>
-
-  <version>1.0.0</version>
-  <publisher>Devin Weaver</publisher>
-  <url>http://tritarget.org/</url>
-  <description>An example on using promises in a Titanium application</description>
-  <copyright>Devin Weaver 2013 (CC BY 3.0)</copyright>
-
-  <icon>default_app_logo.png</icon>
-  <persistent-wifi>false</persistent-wifi>
-  <prerendered-icon>false</prerendered-icon>
-  <statusbar-style>opaque</statusbar-style>
-  <statusbar-hidden>false</statusbar-hidden>
-  <fullscreen>false</fullscreen>
-  <navbar-hidden>false</navbar-hidden>
-  <analytics>false</analytics>
-
+    <sdk-version>3.5.1.GA</sdk-version>
+    <deployment-targets>
+        <target device="tizen">false</target>
+        <target device="mobileweb">false</target>
+        <target device="blackberry">false</target>
+        <target device="iphone">true</target>
+        <target device="ipad">false</target>
+        <target device="android">true</target>
+    </deployment-targets>
+    <id>com.tritarget.promises.example.app</id>
+    <name>Promises Example</name>
+    <guid>2fd12a86-9c07-4c91-bd95-2b86c8fc755a</guid>
+    <version>1.0.0</version>
+    <publisher>Devin Weaver</publisher>
+    <url>http://tritarget.org/</url>
+    <description>An example on using promises in a Titanium application</description>
+    <copyright>Devin Weaver 2013 (CC BY 3.0)</copyright>
+    <icon>default_app_logo.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>opaque</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>false</analytics>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
 </ti:app>
+<!-- This file is auto generated from the rake build task. THIS FILE GETS OVERWRITEN -->

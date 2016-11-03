@@ -4,6 +4,19 @@ An example on using promises in a Titanium application.
 
 The `non_alloy` branch does *not* use Alloy. If you want to see examples based on alloy check out the `master` branch.
 
+This fork by @gazialankus applies a number of changes to make it work fine in Android. The changes are: 
+
+- To make it work in Android, broke the UI's dependency on iOS and simplified it. Also edited tiapp.xml to add Android stuff and to change default units to dp.
+- To make it work in Titanium Studio, commented out the ES6Generators detection in q.js because it broke Titanium Studio debugger (Titanium does not have ES6 anyway).
+- To make it work with Genymotion or an actual Android device, changed localhost to the local IP of the host machine, which the user should edit (in Resources/root_win.js:53).
+
+Known issues in Android and Titanium Studio debugger
+
+- In q.js there are a couple of places where exceptions are thrown intentionally. Debugger stops at them by default, and you have to hit continue. If you don't want this, uncheck Window->Preferences->Studio->JavaScript Debug->Suspend on errors.
+- The fourth button (Try HTTP load (parse error)) freezes the app in Titanium Studio's debugger, as per this bug: https://jira.appcelerator.org/browse/TIMOB-17375
+- node-inspector is an alternative debugger that does not have these issues. See https://gist.github.com/ffabreti/8fd551ed321d51d7f458#comment-1393322
+- Trying to run server.coffee from this directory adds the node_modules directory that shows errors in Titanium Studio. Instead, move package.json and server.coffee to a separate directory and run it from there. 
+
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Getting Started](#getting-started)
@@ -13,6 +26,7 @@ The `non_alloy` branch does *not* use Alloy. If you want to see examples based o
     - [HTTP Requests](#http-requests)
 - [Tests](#tests)
     - [Example specs in Jasmine](#example-specs-in-jasmine)
+- [Android Compatibility](#android-compatibility)
 - [License](#license)
 
 ## Getting Started
@@ -176,6 +190,16 @@ describe "A working test for promises", ->
 A little but more code but now we can guarantee that when we expect the
 callback to have been called the `then` method will have had a chance to
 finish.
+
+## Android Compatibility
+
+This should work both in iOS and Android. However, to make it work in Titanium Studio's debugger in Android, we made the following change: the ES6Generators detection in q.js is commented out because it broke Titanium Studio debugger (Titanium does not have ES6 anyway).
+
+Known issues and suggestions for Android and Titanium Studio debugger:
+
+- In q.js there are a couple of places where exceptions are thrown intentionally. Debugger stops at them by default, and you have to hit continue. If you don't want this, uncheck Window->Preferences->Studio->JavaScript Debug->Suspend on errors.
+- The fourth button (Try HTTP load (parse error)) freezes the app in debug mode as per this bug: https://jira.appcelerator.org/browse/TIMOB-17375 . It works fine in run mode.
+- node-inspector is an alternative debugger that does not have these issues. See https://gist.github.com/ffabreti/8fd551ed321d51d7f458#comment-1393322
 
 # License
 

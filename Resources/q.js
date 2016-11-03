@@ -320,14 +320,14 @@ if (typeof ReturnValue !== "undefined") {
 // like to make it possible to use generators in deployed browsers, so
 // we also support Python-style generators.  At some point we can remove
 // this block.
-var hasES6Generators;
-try {
-    /* jshint evil: true, nonew: false */
-    new Function("(function* (){ yield 1; })");
-    hasES6Generators = true;
-} catch (e) {
-    hasES6Generators = false;
-}
+var hasES6Generators = false; //Titanium does not have it and the code below breaks Titanium Studio debugger. 
+// try {
+    // /* jshint evil: true, nonew: false */
+    // new Function("(function* (){ yield 1; })");
+    // hasES6Generators = true;
+// } catch (e) {
+    // hasES6Generators = false;
+// }
 
 // long stack traces
 
